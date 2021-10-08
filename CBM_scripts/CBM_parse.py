@@ -85,7 +85,7 @@ def plot_data(d):
         #peak finder via Y values. Threshold = height (can alter based on data)
         #Can use peak_list variable to select which peak you want to base the height off of
         #peaks, _ = find_peaks(dfy, height = max(dfy)*0.4)
-        peaks, _ = find_peaks(dfy, height = peak_list[4]*0.2, distance = 2)
+        peaks, _ = find_peaks(dfy, height = peak_list[4]*0.2, distance = 3.5)
         #peak width at 1/2 peak height
         results_half = peak_widths(dfy, peaks, rel_height=0.5)
         results_half[0]
