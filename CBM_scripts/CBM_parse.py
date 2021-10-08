@@ -78,8 +78,14 @@ def plot_data(d):
         dfx = d[l]['Time.1'].to_numpy()
         #assign dfy (intensity) as Y values, and convert to numpy
         dfy = d[l]['Intensity.1'].to_numpy()
+        print(max(dfy))
+        peak_list = -np.sort(-dfy)
+        #highs[4]
+        print(peak_list[3])
         #peak finder via Y values. Threshold = height (can alter based on data)
-        peaks, _ = find_peaks(dfy, height = 5000)
+        #Can use peak_list variable to select which peak you want to base the height off of
+        #peaks, _ = find_peaks(dfy, height = max(dfy)*0.4)
+        peaks, _ = find_peaks(dfy, height = peak_list[4]*0.2, distance = 2)
         #peak width at 1/2 peak height
         results_half = peak_widths(dfy, peaks, rel_height=0.5)
         results_half[0]
@@ -91,9 +97,10 @@ def plot_data(d):
         peak_res = []
         for ind in df.index[:-1]:
             resolution = (df['peaks'][ind+1]-df['peaks'][ind])/(df['result_width'][ind]+df['result_width'][ind+1])
+            resolution = '{:.2f}'.format(resolution)
             peak_res.append(resolution)
         peak_res_panda = pd.DataFrame(peak_res)
-        peak_res_panda.to_csv('resData/resolution_{:.2f}_{}.csv'.format(l,2))
+        peak_res_panda.to_csv('resData/resolution_{}_{}.csv'.format(l,2))
             
         #plot data
         plt.plot(dfy)
