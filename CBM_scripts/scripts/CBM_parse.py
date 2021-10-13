@@ -1,3 +1,4 @@
+# TODO: Some of these imports are not being used, they should be removed
 import os
 from os import name, set_inheritable
 from numpy.lib.function_base import percentile
@@ -6,6 +7,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math
 import csv
+# TODO: Were these imported by VS code or did you manually import them
 from pandas.core.base import DataError
 from pandas.core.frame import DataFrame
 
@@ -23,35 +25,57 @@ from scipy import interpolate
 import statistics
 import re
 
+# TODO: Good job on defining the dictionary with appropriate commenting
 # create dictionary d = {sheets: data} as {keys:values}
 d = {}
+# TODO: Do not do this, while it can help in organization it makes the code more complex
 isExist = os.path.exists('plotData')
 isExist2 = os.path.exists('resData')
 isExist3 = os.path.exists('data')
 
 #make folders to store data - Plots | resolution | data
-if isExist is True:
+# TODO: Format as follows
+# TODO: redo pathing
+if os.path.exists('plotData') is True:
     print('\nYou already have plotData Folder\n')
+    # TODO: remove this, you should not need the pass statement here, pass is used for a different reason
     pass
 else:
     print('\nMaking a plotData folder\n')
+    # TODO: redo pathing
     os.mkdir('plotData')
 
+# TODO: Format these as the statement above
 if isExist2 is True:
     print('\nYou already have resData Folder\n')
+    # TODO: remove pass
     pass
 else:
     print('\nMaking a resData folder\n')
+    # TODO: redo pathing
     os.mkdir('resData')
+
 if isExist3 is True:
     print('\nYou already have data Folder\n')
+    # TODO: remove pass
     pass
 else:
     print('\nMaking a data folder\n')
+    #TODO: redo pathing
     os.mkdir('data')
 
 #function to import data and assign {sheets:data} in dictionary format. 
 #saves data as a csv file
+
+# TODO: for documenting functions, you should define parameters and return value either above or right inside (generally prefered)
+# TODO: use a block comment
+'''
+TODO:
+function to import data and assign {sheets:data} in dictionary format
+
+name:(describe name parameter)...
+returns: saves data as a csv file
+'''
 def get_data(name):
     #import data to a dictionary
     sheets_dict = pd.read_excel(name, sheet_name=None,usecols= 'A,B,E,F,I,J',skiprows=3)
@@ -71,7 +95,15 @@ def get_data(name):
 #function to plot data
 #save plots in plotData folder
 def plot_data(d):
+    '''
+    TODO: 
+    function to plot data
 
+    d: ...
+    returns: ... 
+    '''
+
+    # TODO: does anything here need to be put in as command line arguments
     #iterate through {sheet:data} in the excel file
     for l in d.keys():
         #assign dfx (time) as X values, and convert to numpy
@@ -117,5 +149,18 @@ def plot_data(d):
 
         
 #enter your file name in getMyData variable
+
+'''
+TODO:
+You should use command line arugments here instead of having users define in the code
+
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument('--filename', type=str, default='PT120.xlsx')
+args = parser.parse_args()
+
+now run the file as 
+python CBM_parse.py --filename example_file_name.xlsx
+'''
 getMyData = get_data('PT120.xlsx')
 getMyPlots = plot_data(d)
