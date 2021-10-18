@@ -1,3 +1,4 @@
+# TODO: Some unused imports here, please remove them
 from os import name, set_inheritable
 from numpy.lib.function_base import percentile
 import pandas as pd
@@ -23,6 +24,8 @@ import re
 
 #import data from excel workbook
 #import all sheets, skip first 3 rows, and use only 6 columns 
+
+# TODO: consider changing this to a command line argument using argparse
 df_master = pd.read_excel("PT110.xlsx", sheet_name =None, skiprows=3, usecols= 'A,B,E,F,I,J')
 #df_csv = pd.read_csv('paddy3.txt', sep='\s+',skiprows=3)
 
@@ -42,7 +45,7 @@ print(df_master.keys())
 # print(df_master['80us_1p1s'][['Time.1','Intensity.1']])
 
 
-
+# TODO: You should be able to use dropna() on an entire dataframe but it should not make much of a difference of how its done
 for key, item in df_master.items():
     item = item.dropna()
 
@@ -57,17 +60,19 @@ for key, item in df_master.items():
 # for key, item in df_master.items():
 #     peaks, _ = find_peaks(item['Time.1','Intensity.1'], threshold = 4000)
 
-
+# TODO: Should any of these be command line arguments (i.e. non hardcoded values)
 dfx = df_master['110us_1p9s']['Time.1'].to_numpy()
 dfy = df_master['110us_1p9s']['Intensity.1'].to_numpy()
 #print(type(dfy))
 #print(dfy)
 
+# TODO: Same comment on CL args on height and rel_height
 peaks, _ = find_peaks(dfy, height = 8000)
 results_half = peak_widths(dfy, peaks, rel_height=0.5)
 results_half[0]
 
 
+# TODO: if you have to make similar plots multiple times, I would use a function to reduce the amount of code
 #plot data
 plt.plot(dfy)
 plt.plot(peaks, dfy[peaks], "o")
@@ -123,6 +128,7 @@ results_half2[0]  # widths
 #results_full = peak_widths(dfy, peaks, rel_height=1)
 #results_full[0]  # widths
 
+#TODO: same comment on plotting as before
 #plot data
 plt.plot(norm)
 plt.plot(peaks1, norm[peaks1], "o")
@@ -251,3 +257,4 @@ plt.legend(loc = 'lower right')
 # plt.text(0,1.95,'I Mean = 1.81')
 # plt.text(0,1.92,'I Std Dev = 0.13')
 plt.show()
+#TODO: where are you saving any of these plots

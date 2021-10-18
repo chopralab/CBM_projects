@@ -1,3 +1,4 @@
+# TODO: some of these imports are unused, remove them
 import os
 from os import name, set_inheritable
 from numpy.lib.function_base import percentile
@@ -22,6 +23,9 @@ from scipy import interpolate
 
 import statistics
 import re
+
+# TODO: give an overview of what this is testing and try to remove as much of the commented out code as you can
+# TODO: consider using unit testing to create structured testcases (this can be difficult depending on the problem)
 
 # create dictionary d = {sheets: data} as {keys:values}
 d = {}

@@ -1,4 +1,6 @@
 import pandas as pd
+
+# TODO: do you need command line args for the file name, sheet_name, etc.
 sheets_dict = pd.read_excel('PT120.xlsx', sheet_name=None,usecols= 'A,B,E,F,I,J',skiprows=3)
 full_table = pd.DataFrame()
 d = {}
@@ -9,13 +11,14 @@ for name, sheet in sheets_dict.items():
 
 
 print(d.keys())
+# TODO: is this just for testing out parts of the loop
 print(d['120us_0.8s']['Time'])
-
 
 
 #extract dictionary 1 by 1
 for l in d.keys():
     #print(d[l])
+    #TODO: any type of command line arguments used here?
     print(d[l][['Time.1','Intensity.1']])
 #print(type(sheets_dict))
 #print(type(d))
