@@ -66,13 +66,18 @@ sheets dict: read excel file
     usecols = 'A,B...etc': Use data from these columns
     skiprows = 3: skip these rows
 
+for loop
+    iterate through every sheet in dictionary 
+    drop NaN values 
+
+
 
 returns: saves data as a csv file
 '''
 def get_data(name):
     #import data to a dictionary
     # for name in os.listdir('../excelSheets'):
-    sheets_dict = pd.read_excel(name, sheet_name=None,usecols= 'A,B,E,F,I,J',skiprows=3)
+    sheets_dict = pd.read_csv(name)
 
     # iterate through sheets_dict
     # drop NaN values
@@ -95,6 +100,8 @@ def plot_data(d):
 
     d: ...
     returns: ... 
+    saves resolution in resData folder
+    saves plots in plotData folder
     '''
 
     # TODO: does anything here need to be put in as command line arguments
@@ -157,6 +164,7 @@ now run the file as
 python CBM_parse.py --filename example_file_name.xlsx
 '''
 
+#command line argument to run script +
 import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('--filename', type=str, default='PT120.xlsx')
