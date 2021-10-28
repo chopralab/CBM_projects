@@ -100,5 +100,3 @@ parser.add_argument('--filename', type=str, default='mop_data.csv')
 args = parser.parse_args()
 
 test_data = get_data('mop_data.csv')
-test_plot = get_plot('mop_data.csv')
-test_res = get_res('mop_data.csv')
