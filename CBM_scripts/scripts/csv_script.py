@@ -26,6 +26,24 @@ from scipy import interpolate
 import statistics
 import re
 
+
+if os.path.exists('../plotData') is True:
+    print('\nYou already have plotData Folder\n')
+else:
+    print('\nMaking a plotData folder\n')
+    os.mkdir('../plotData')
+
+if os.path.exists('../resData') is True:
+    print('\nYou already have resData Folder\n')
+else:
+    print('\nMaking a resData folder\n')
+    os.mkdir('../resData')
+
+if os.path.exists('../data') is True:
+    print('\nYou already have data Folder\n')
+else:
+    print('\nMaking a data folder\n')
+    os.mkdir('../data')
 # d = {}
 # df = pd.read_csv('../csvFiles/mop_data.csv')
 
