@@ -10,7 +10,7 @@ Machine learning scripts will be added soon...
 
 ## Folders
 
-**Scripts**  - contains scripts 
+**Scripts**  - contains scripts/n
 **plotData** - saves the plotted figures
 **resData** - saves the resolution data
 **data** - saves the raw data 
