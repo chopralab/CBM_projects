@@ -14,6 +14,9 @@ Machine learning scripts will be added soon...
 **resData** - saves the resolution data
 **data** - saves the raw data 
 
+**csvFiles** - upload csv files to run here
+**excelSheets** - upload excel files to run here
+
 
 ## List of scripts
 **CBM_parse.py**  - Automated script to parse data from excel workbooks and all the sheets it contains. 
@@ -25,4 +28,8 @@ Machine learning scripts will be added soon...
 1. Clone the repository to your own personal machine
 2. if you plan for the scripts to be a work in progress, it is suggested that you create a new branch
 git checkout -b [branch_name]
-3. 
+3. Upload excel files to the excelSheets folder and upload csv files to the csvFiles folder 
+4. Open VScode or whatever editor you decide to use
+5. Make sure you are in the CBM_scripts folder
+6. Run the script pertaining to the type of file you uploaded
+7. Analyze data
