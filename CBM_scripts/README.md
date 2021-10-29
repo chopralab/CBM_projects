@@ -9,7 +9,7 @@
 5. Analyze data
 
 
-## Python Packages
+## Python Packages and Version
 
 1. Python 3
 2. Pandas 1.2.5
