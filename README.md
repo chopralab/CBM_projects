@@ -9,6 +9,7 @@ The scripts also plots the data and applies the resolution function between peak
 Machine learning scripts will be added soon...
 
 ## Folders
+
 **Scripts**  - contains scripts 
 **plotData** - saves the plotted figures
 **resData** - saves the resolution data
