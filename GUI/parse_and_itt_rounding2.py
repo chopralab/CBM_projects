@@ -233,7 +233,7 @@ for z in fitness_list:
 solution_index = [] 
 c = 0 
 for i in fitness_list:# get index values for solutions 
-    if ( ( ( i - 1.5 ) ** 2 ) ** .5 ) > 0.05:
+    if ( ( ( i - 1.5 ) ** 2 ) ** .5 ) <= 0.05:
         solution_index.append(c)
     c += 1
 
