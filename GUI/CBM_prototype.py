@@ -154,6 +154,7 @@ class Wizard(tk.Tk):
                                  f"{self.working_dir}","-v",str(self.fval.get()[-1])])
             print('test')
             self.exl_but.configure(state="normal")
+            self.convert_button.configure(state="normal")
             self.entry_box.configure(state="disabled")
             self.fmen.configure(state="disabled")
             self.wkdir_but.configure(state="disabled")

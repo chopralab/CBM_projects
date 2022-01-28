@@ -16,7 +16,7 @@ opts,args = parser.parse_args()
 path_var = opts.path_var
 
 pumping_time = paddy.PaddyParameter(param_range=[1,4,.1],param_type='continuous',limits=[1,4], gaussian='default',normalization = True)
-pulsing_time = paddy.PaddyParameter(param_range=[0.000070,0.000180,.000010],param_type='continuous',limits=[0.0000070,0.000180], gaussian='default',normalization = True)
+pulsing_time = paddy.PaddyParameter(param_range=[0.000070,0.000180,.000010],param_type='continuous',limits=[0.000070,0.000180], gaussian='default',normalization = True)
 
 class space(object):
     def __init__(self):
@@ -30,7 +30,7 @@ def dummy_eval_function(input):
 
 
 pumping_time = paddy.PaddyParameter(param_range=[1,4,.1],param_type='continuous',limits=[1,4], gaussian='default',normalization = True)
-pulsing_time = paddy.PaddyParameter(param_range=[0.000070,0.000180,.000010],param_type='continuous',limits=[0.0000070,0.000180], gaussian='default',normalization = True)
+pulsing_time = paddy.PaddyParameter(param_range=[0.000070,0.000180,.000010],param_type='continuous',limits=[0.000070,0.000180], gaussian='default',normalization = True)
 Space = space()
 runner = paddy.PFARunner(space=Space, eval_func=dummy_eval_function,
                         paddy_type='population', rand_seed_number=10,

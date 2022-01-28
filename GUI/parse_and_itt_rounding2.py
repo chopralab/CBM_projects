@@ -3,6 +3,7 @@ Backend dev script, uses ploting to display thresholds to alert user if the spec
 was processed correctly
 """
 # Note that this code will break if the number of peaks are bellow paddy params
+# Note that the indexing for iterations past 0 may break
 
 import paddy
 from optparse import OptionParser
@@ -51,20 +52,24 @@ def dummy_eval_function(input):
     print(input[1])
     return(-100)
 
-def pumping_times():
+def pumping_times(paddy_itt):
     """Returns pumping times from a first iteration given pickle."""
     replicates = 10 #may want to make replicates a user input in the future (the number of times paddy values are replicated)
-    runner = paddy.utils.paddy_recover(path_var+'iteration_{0}'.format(str(paddy_itt)))
+    runner = paddy.utils.paddy_recover('C:/Users/Chopr/Desktop/CBM/CBM_projects/GUI/'+'paddytest_{0}'.format(str(paddy_itt)))
     pump_list = []
-    if paddy_itt == 0:
+    print(paddy_itt)
+    if int(paddy_itt) == 0:
+        print('itt is 0')
         for i in range(10):
             pump_list.append(runner.seed_params[i][0][0])
     else:
         for i in np.arange(runner.generation_data[str(paddy_itt)][0],runner.generation_data[str(paddy_itt)][1]):
+            print(np.arange(runner.generation_data[str(paddy_itt)][0],runner.generation_data[str(paddy_itt)][1]))
             pump_list.append(runner.seed_params[i][0][0])
     # we will probably want to write the tuning pulses
     times = [1.0,2.0,3.0,4.0,5.0]
-    time = 7#time when the initial trial startsw 
+    time = 7#time when the initial trial startsw
+    print(len(pump_list))
     for i in pump_list:
         for j in range(replicates):
             times.append(round(i+time,1))
@@ -88,7 +93,7 @@ def pumping_times():
     return(times,pump_list)
 '''
 
-runner = paddy.utils.paddy_recover(path_var+'iteration_{0}'.format(str(paddy_itt)))
+runner = paddy.utils.paddy_recover('C:/Users/Chopr/Desktop/CBM/CBM_projects/GUI/'+'paddytest_{0}'.format(str(paddy_itt)))
 dft = pd.read_csv(crom_path,skiprows=4)
 dft.columns=['Time','Intensity']
 dft['Time'] = pd.to_numeric(dft['Time'], errors='coerce')
@@ -116,9 +121,11 @@ for i , j in zip(results_half[2], results_half[3]):
 
 width_list = np.array([results_half[1],lower,higher])
 #plot data
+#looks fine if tuning peaks are first
 plt.plot(dfx,dfy)
 plt.plot(dfx[peaks], dfy[peaks], "o")
-times,pump_list = pumping_times()
+times,pump_list = pumping_times(paddy_itt)
+print(len(times))
 for i in times:
     plt.plot((dfx[peaks[0]]+(i-1)/60,dfx[peaks[0]]+(i-1)/60),(0,max(dfy)),c='k')
 plt.hlines(*width_list, color="C2")
@@ -192,6 +199,7 @@ fitness_list = []
 for i in range(len(thresh_vals)-1):
     fitness_list.append([])
 print(len(peak_res))
+print(len(fitness_list))
 t = 0
 for i in peaks[orient+1:]:
     if t < len(thresh_vals)-1:
