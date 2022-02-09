@@ -54,7 +54,7 @@ def dummy_eval_function(input):
 
 def pumping_times(paddy_itt):
     """Returns pumping times from a first iteration given pickle."""
-    replicates = 10 #may want to make replicates a user input in the future (the number of times paddy values are replicated)
+    replicates = 4 #may want to make replicates a user input in the future (the number of times paddy values are replicated)
     runner = paddy.utils.paddy_recover('C:/Users/Chopr/Desktop/CBM/CBM_projects/GUI/'+'paddytest_{0}'.format(str(paddy_itt)))
     pump_list = []
     print(paddy_itt)
@@ -208,7 +208,7 @@ for i in peaks[orient+1:]:
     fitness_list[t].append(i)
 c = 0
 for z in fitness_list:
-    if len(z) != 10:
+    if len(z) != 4:
         fitness_list[c] = -9999999
     else:
         results_half = peak_widths(dfy, z, rel_height=0.5)
@@ -233,7 +233,7 @@ for z in fitness_list:
             #resolution = '{:.2f}'.format(resolution)
             print(resolution)
             peak_res.append(resolution)
-        fitness_list[c] = (sum(peak_res)/9)
+        fitness_list[c] = (sum(peak_res)/3)
     c += 1
 
     print(fitness_list)
@@ -273,7 +273,7 @@ if len(solution_index) == 0:
     '''
     '''
 
-    replicates = 10 #may want to make replicates a user input in the future (the number of times paddy values are replicated)
+    replicates = 4 #may want to make replicates a user input in the future (the number of times paddy values are replicated)
 
     param_list = []
     for i in runner.seed_params[runner_index:]:

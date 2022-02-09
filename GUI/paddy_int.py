@@ -34,7 +34,7 @@ pulsing_time = paddy.PaddyParameter(param_range=[0.000070,0.000180,.000010],para
 Space = space()
 runner = paddy.PFARunner(space=Space, eval_func=dummy_eval_function,
                         paddy_type='population', rand_seed_number=10,
-                        yt=8,Qmax=5,r=.02,iterations =1)
+                        yt=5,Qmax=5,r=.02,iterations=1)
 
 runner.run_paddy()
 runner.save_paddy(path_var+"iteration_0")#might want to get file handle 
@@ -43,7 +43,7 @@ runner.save_paddy(path_var+"iteration_0")#might want to get file handle
 ### this code block should serve as the module that 
 # pumping & pulsing
 
-replicates = 10 #may want to make replicates a user input in the future (the number of times paddy values are replicated)
+replicates = 4 #may want to make replicates a user input in the future (the number of times paddy values are replicated)
 
 param_list = []
 for i in runner.seed_params:
