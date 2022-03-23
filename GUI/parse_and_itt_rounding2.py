@@ -55,7 +55,7 @@ def dummy_eval_function(input):
 def pumping_times(paddy_itt):
     """Returns pumping times from a first iteration given pickle."""
     replicates = 4 #may want to make replicates a user input in the future (the number of times paddy values are replicated)
-    runner = paddy.utils.paddy_recover('C:/Users/Chopr/Desktop/CBM/CBM_projects/GUI/'+'paddytest_{0}'.format(str(paddy_itt)))
+    runner = paddy.utils.paddy_recover(path_var+'iteration_{0}'.format(str(paddy_itt)))
     pump_list = []
     print(paddy_itt)
     if int(paddy_itt) == 0:
@@ -93,7 +93,7 @@ def pumping_times():
     return(times,pump_list)
 '''
 
-runner = paddy.utils.paddy_recover('C:/Users/Chopr/Desktop/CBM/CBM_projects/GUI/'+'paddytest_{0}'.format(str(paddy_itt)))
+runner = paddy.utils.paddy_recover(path_var+'iteration_{0}'.format(str(paddy_itt)))
 dft = pd.read_csv(crom_path,skiprows=4)
 dft.columns=['Time','Intensity']
 dft['Time'] = pd.to_numeric(dft['Time'], errors='coerce')
